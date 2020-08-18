@@ -118,8 +118,6 @@ func CheckBestRoute(
 		Price:       filteredRoutes[0].Price,
 	}
 
-	log.Print(filteredRoutes[0].Price)
-
 	return bestRoute, nil
 }
 
