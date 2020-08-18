@@ -4,6 +4,12 @@
 
 This repo contains a simple command line tool and a rest server.
 
+## Architecture
+
+For the system architecture, I decided to use the Domain-Driven Design pattern.
+
+I used the folder structure proposed by the [Standard Go Project Layout](https://github.com/golang-standards/project-layout).
+
 ## Install
 
 Make sure you have Git and Go 1.14.6 installed in you machine.
