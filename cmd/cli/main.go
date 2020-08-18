@@ -2,9 +2,8 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
-
-	"github.com/rs/zerolog/log"
 
 	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity"
 	"github.com/cyruzin/bexs_challenge/internal/pkg/csv"
@@ -12,7 +11,22 @@ import (
 
 const filePath = "../../assets/routes.csv"
 
+func usage() {
+	log.Println(
+		`Wrong usage, check the examples below:
+
+Development example: go run main.go BBB AAA
+Production example: ./cli BBB AAA`)
+}
+
 func main() {
+	log.SetFlags(0)
+
+	if len(os.Args[1:]) < 2 {
+		usage()
+		return
+	}
+
 	args := os.Args[1:]
 
 	query := routeentity.Route{
@@ -23,7 +37,7 @@ func main() {
 
 	route, err := csv.CheckBestRoute(filePath, query)
 	if err != nil {
-		log.Error().Err(err).Msg(err.Error())
+		log.Println(err.Error())
 		return
 	}
 
@@ -34,5 +48,5 @@ func main() {
 		route.Price,
 	)
 
-	log.Info().Msg(bestRoute)
+	log.Println(bestRoute)
 }

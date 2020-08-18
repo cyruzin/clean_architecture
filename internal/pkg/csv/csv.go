@@ -2,6 +2,7 @@ package csv
 
 import (
 	"encoding/csv"
+	"errors"
 	"io"
 	"os"
 	"sort"
@@ -14,7 +15,7 @@ import (
 
 // read reads the content of the CSV file.
 func read(filePath string) ([][]string, error) {
-	csvFile, err := os.Open(filePath)
+	csvFile, err := os.OpenFile(filePath, os.O_RDONLY|os.O_CREATE, 0644)
 	if err != nil {
 		log.Error().Err(err).Msg("Failed to open the CSV file")
 		return nil, err
@@ -43,15 +44,15 @@ func read(filePath string) ([][]string, error) {
 
 // Write writes the new content to the end of the file.
 func Write(filePath string, content string) error {
-	file, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
+	csvFile, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
 		log.Error().Err(err).Msg("Could not open CSV file to write")
 		return err
 	}
 
-	defer file.Close()
+	defer csvFile.Close()
 
-	if _, err := file.WriteString(content); err != nil {
+	if _, err := csvFile.WriteString(content); err != nil {
 		log.Error().Err(err).Msg("Failed to write to the CSV file")
 		return err
 	}
@@ -111,6 +112,10 @@ func CheckBestRoute(
 	sort.SliceStable(filteredRoutes, func(i, j int) bool {
 		return filteredRoutes[i].Price < filteredRoutes[j].Price
 	})
+
+	if len(filteredRoutes) == 0 {
+		return routeentity.Route{}, errors.New("Route not found")
+	}
 
 	bestRoute := routeentity.Route{
 		Departure:   query.Departure,
