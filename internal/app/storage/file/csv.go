@@ -49,7 +49,7 @@ func (c *csvRepository) Create(
 	}
 
 	newEntry := fmt.Sprintf(
-		"%s,%s,%d\n",
+		"%s,%s,%d",
 		route.Departure,
 		route.Destination,
 		route.Price,

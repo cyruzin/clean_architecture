@@ -52,7 +52,11 @@ func Write(filePath string, content string) error {
 
 	defer csvFile.Close()
 
-	if _, err := csvFile.WriteString(content); err != nil {
+	if content == "" {
+		return errors.New("Empty content")
+	}
+
+	if _, err := csvFile.WriteString(content + "\n"); err != nil {
 		log.Error().Err(err).Msg("Failed to write to the CSV file")
 		return err
 	}
