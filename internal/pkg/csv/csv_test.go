@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity"
+	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
 	"github.com/cyruzin/bexs_challenge/internal/pkg/csv"
 )
 
