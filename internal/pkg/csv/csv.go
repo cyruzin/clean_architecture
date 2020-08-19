@@ -21,6 +21,8 @@ func read(filePath string) ([][]string, error) {
 		return nil, err
 	}
 
+	defer csvFile.Close()
+
 	r := csv.NewReader(csvFile)
 
 	var parsedFile [][]string
