@@ -7,9 +7,9 @@ import (
 
 	"github.com/cyruzin/bexs_challenge/internal/pkg/csv"
 
-	routerepository "github.com/cyruzin/bexs_challenge/internal/app/repository"
+	routerepository "github.com/cyruzin/bexs_challenge/internal/app/repository/route"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity"
+	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
 )
 
 const filePath = "../../assets/routes.csv"

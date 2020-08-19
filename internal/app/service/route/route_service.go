@@ -3,9 +3,9 @@ package routeservice
 import (
 	"context"
 
-	routerepository "github.com/cyruzin/bexs_challenge/internal/app/repository"
+	routerepository "github.com/cyruzin/bexs_challenge/internal/app/repository/route"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity"
+	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
 )
 
 // RouteService provides route operations.
