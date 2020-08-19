@@ -37,4 +37,4 @@ jobs:
       run: go build -v ./cmd/cli/main.go
 
     - name: Test
-      run: go test -v .
+      run: go test -v ./...
