@@ -1,6 +1,6 @@
-# Bexs Challenge
+# Clean Bank App
 
-[![Build](https://github.com/cyruzin/bexs_challenge/workflows/Build/badge.svg)](https://github.com/cyruzin/bexs_challenge/actions?query=workflow%3ABuild+branch%3Amaster) [![Go Report Card](https://goreportcard.com/badge/github.com/cyruzin/bexs_challenge)](https://goreportcard.com/report/github.com/cyruzin/bexs_challenge) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![Build](https://github.com/cyruzin/clean_banking/workflows/Build/badge.svg)](https://github.com/cyruzin/clean_banking/actions?query=workflow%3ABuild+branch%3Amaster) [![Go Report Card](https://goreportcard.com/badge/github.com/cyruzin/clean_banking)](https://goreportcard.com/report/github.com/cyruzin/clean_banking) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
 This repo contains a simple command line tool and a rest server.
 
@@ -17,7 +17,7 @@ Make sure you have Git and Go 1.14.6 installed in you machine.
 Clone the repo:
 
 ```sh
- git clone git@github.com:cyruzin/bexs-challenge.git
+ git clone git@github.com:cyruzin/clean_banking.git
 ```
 
 Install Go dependencies:
