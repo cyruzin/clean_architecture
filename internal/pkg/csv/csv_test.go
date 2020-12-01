@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
-	"github.com/cyruzin/bexs_challenge/internal/pkg/csv"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
+	"github.com/cyruzin/clean_architecture/internal/pkg/csv"
 )
 
 const filePath = "../../../assets/routes.csv"

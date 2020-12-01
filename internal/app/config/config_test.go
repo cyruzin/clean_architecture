@@ -3,7 +3,7 @@ package config_test
 import (
 	"testing"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/config"
+	"github.com/cyruzin/clean_architecture/internal/app/config"
 )
 
 func TestLoadConfigSuccess(t *testing.T) {

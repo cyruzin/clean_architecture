@@ -5,13 +5,13 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	csvstorage "github.com/cyruzin/bexs_challenge/internal/app/storage/file"
+	csvstorage "github.com/cyruzin/clean_architecture/internal/app/storage/file"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/http/controller"
+	"github.com/cyruzin/clean_architecture/internal/app/http/controller"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
 
-	"github.com/cyruzin/bexs_challenge/internal/pkg/rest"
+	"github.com/cyruzin/clean_architecture/internal/pkg/rest"
 )
 
 func TestToJSON(t *testing.T) {

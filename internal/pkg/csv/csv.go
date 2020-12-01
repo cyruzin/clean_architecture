@@ -8,7 +8,7 @@ import (
 	"sort"
 	"strconv"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
 
 	"github.com/rs/zerolog/log"
 )

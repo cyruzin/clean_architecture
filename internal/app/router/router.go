@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/http/controller"
-	"github.com/cyruzin/bexs_challenge/internal/app/http/middleware"
+	"github.com/cyruzin/clean_architecture/internal/app/http/controller"
+	"github.com/cyruzin/clean_architecture/internal/app/http/middleware"
 
 	"github.com/go-chi/chi"
 	chiMiddleware "github.com/go-chi/chi/middleware"
@@ -43,7 +43,7 @@ func New(h controller.RouteHandler) http.Handler {
 	router.Use(middleware.LoggerMiddleware)
 
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Bexs Challenge by Cyro Dubeux"))
+		w.Write([]byte("Clear Architecture by Cyro Dubeux"))
 	})
 
 	router.Route("/route", func(router chi.Router) {

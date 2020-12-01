@@ -3,14 +3,14 @@ package main
 import (
 	"context"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/server"
+	"github.com/cyruzin/clean_architecture/internal/app/server"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/http/controller"
+	"github.com/cyruzin/clean_architecture/internal/app/http/controller"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/router"
-	csvstorage "github.com/cyruzin/bexs_challenge/internal/app/storage/file"
+	"github.com/cyruzin/clean_architecture/internal/app/router"
+	csvstorage "github.com/cyruzin/clean_architecture/internal/app/storage/file"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/config"
+	"github.com/cyruzin/clean_architecture/internal/app/config"
 	"github.com/rs/zerolog"
 )
 

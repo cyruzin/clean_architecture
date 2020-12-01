@@ -4,10 +4,10 @@ import (
 	"encoding/json"
 	"net/http"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
-	"github.com/cyruzin/bexs_challenge/internal/pkg/rest"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
+	"github.com/cyruzin/clean_architecture/internal/pkg/rest"
 
-	routeservice "github.com/cyruzin/bexs_challenge/internal/app/service/route"
+	routeservice "github.com/cyruzin/clean_architecture/internal/app/service/route"
 )
 
 const (

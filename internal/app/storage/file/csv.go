@@ -5,11 +5,11 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/cyruzin/bexs_challenge/internal/pkg/csv"
+	"github.com/cyruzin/clean_architecture/internal/pkg/csv"
 
-	routerepository "github.com/cyruzin/bexs_challenge/internal/app/repository/route"
+	routerepository "github.com/cyruzin/clean_architecture/internal/app/repository/route"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
 )
 
 const filePath = "../../assets/routes.csv"

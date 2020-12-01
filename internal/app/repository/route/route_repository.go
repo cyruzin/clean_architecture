@@ -3,7 +3,7 @@ package routerepository
 import (
 	"context"
 
-	routeentity "github.com/cyruzin/bexs_challenge/internal/app/entity/route"
+	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
 )
 
 // RouteRepository provides access to route repository.

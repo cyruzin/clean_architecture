@@ -6,7 +6,7 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/cyruzin/bexs_challenge/internal/app/config"
+	"github.com/cyruzin/clean_architecture/internal/app/config"
 	"github.com/rs/zerolog/log"
 )
 
