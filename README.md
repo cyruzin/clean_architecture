@@ -12,7 +12,7 @@ I used the folder structure proposed by the [Standard Go Project Layout](https:/
 
 ## Install
 
-Make sure you have Git and Go 1.14.6 installed in you machine.
+Make sure you have Git and Go 1.15.x installed in you machine.
 
 Clone the repo:
 
