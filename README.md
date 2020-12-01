@@ -17,7 +17,7 @@ Make sure you have Git and Go 1.14.6 installed in you machine.
 Clone the repo:
 
 ```sh
- git clone git@github.com:cyruzin/clean_banking.git
+ git clone git@github.com:cyruzin/clean_architecture.git
 ```
 
 Install Go dependencies:
