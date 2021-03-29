@@ -38,7 +38,7 @@ func main() {
 	routeRepository := storage.NewCSVRepository()
 	routeService := service.NewService(routeRepository)
 
-	route, err := routeService.CheckBestRoute(util.PathBuilder("./assets/routes.csv"), query)
+	route, err := routeService.CheckBestRoute(util.PathBuilder("/assets/routes.csv"), query)
 	if err != nil {
 		log.Println(err.Error())
 		return

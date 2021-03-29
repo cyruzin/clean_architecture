@@ -7,7 +7,7 @@ import (
 	"github.com/cyruzin/clean_architecture/pkg/util"
 )
 
-var filePath = util.PathBuilder("./assets/routes.csv")
+var filePath = util.PathBuilder("/assets/routes.csv")
 
 func TestRead(t *testing.T) {
 	_, err := csv.Read(filePath)
