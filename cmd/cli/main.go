@@ -5,11 +5,11 @@ import (
 	"log"
 	"os"
 
-	routeentity "github.com/cyruzin/clean_architecture/internal/app/entity/route"
-	"github.com/cyruzin/clean_architecture/internal/pkg/csv"
+	"github.com/cyruzin/clean_architecture/internal/app/domain"
+	storage "github.com/cyruzin/clean_architecture/internal/app/modules/route/repository/file"
+	"github.com/cyruzin/clean_architecture/internal/app/modules/route/service"
+	"github.com/cyruzin/clean_architecture/pkg/util"
 )
-
-const filePath = "../../assets/routes.csv"
 
 func usage() {
 	log.Println(
@@ -29,13 +29,16 @@ func main() {
 
 	args := os.Args[1:]
 
-	query := routeentity.Route{
+	query := &domain.Route{
 		Departure:   args[0],
 		Destination: args[1],
 		Price:       0,
 	}
 
-	route, err := csv.CheckBestRoute(filePath, query)
+	routeRepository := storage.NewCSVRepository()
+	routeService := service.NewService(routeRepository)
+
+	route, err := routeService.CheckBestRoute(util.PathBuilder("./assets/routes.csv"), query)
 	if err != nil {
 		log.Println(err.Error())
 		return

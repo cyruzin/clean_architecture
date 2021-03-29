@@ -32,18 +32,18 @@ func Start(
 		signal.Notify(gracefulStop, os.Interrupt)
 		<-gracefulStop
 
-		log.Info().Msg("Shutting down the server...")
+		log.Info().Msg("shutting down the server...")
 		if err := srv.Shutdown(ctx); err != nil {
-			log.Error().Err(err).Msg("Server failed to shutdown")
+			log.Error().Err(err).Msg("server failed to shutdown")
 		}
 		close(idleConnsClosed)
 	}()
 
-	log.Info().Msgf("Listening on port: %s", cfg.Port)
-	log.Info().Msg("You're good to go! :)")
+	log.Info().Msgf("listening on port: %s", cfg.Port)
+	log.Info().Msg("you're good to go! :)")
 
 	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-		log.Error().Err(err).Msg("Server failed to start")
+		log.Error().Err(err).Msg("server failed to start")
 	}
 
 	<-idleConnsClosed

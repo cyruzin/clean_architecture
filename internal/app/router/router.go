@@ -4,9 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/cyruzin/clean_architecture/internal/app/http/controller"
-	"github.com/cyruzin/clean_architecture/internal/app/http/middleware"
-
+	"github.com/cyruzin/clean_architecture/internal/app/modules/route/http/controller"
+	"github.com/cyruzin/clean_architecture/internal/app/modules/route/http/middleware"
 	"github.com/go-chi/chi"
 	chiMiddleware "github.com/go-chi/chi/middleware"
 	"github.com/go-chi/cors"
@@ -14,7 +13,7 @@ import (
 )
 
 // New initiates all routes.
-func New(h controller.RouteHandler) http.Handler {
+func New(rh *controller.RouteHandler) http.Handler {
 	router := chi.NewRouter()
 
 	cors := cors.New(cors.Options{
@@ -43,12 +42,12 @@ func New(h controller.RouteHandler) http.Handler {
 	router.Use(middleware.LoggerMiddleware)
 
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Clear Architecture by Cyro Dubeux"))
+		w.Write([]byte("Clean Architecture example"))
 	})
 
 	router.Route("/route", func(router chi.Router) {
-		router.Get("/", h.Show)
-		router.Post("/", h.Store)
+		router.Get("/", rh.Find)
+		router.Post("/", rh.Create)
 	})
 
 	return router
