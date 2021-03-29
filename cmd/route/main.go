@@ -3,15 +3,19 @@ package main
 import (
 	"context"
 
+	"os"
+
+	"github.com/cyruzin/clean_architecture/internal/app/modules/route/http/controller"
+	storage "github.com/cyruzin/clean_architecture/internal/app/modules/route/repository/file"
+	"github.com/cyruzin/clean_architecture/internal/app/modules/route/service"
 	"github.com/cyruzin/clean_architecture/internal/app/server"
 
-	"github.com/cyruzin/clean_architecture/internal/app/http/controller"
-
 	"github.com/cyruzin/clean_architecture/internal/app/router"
-	csvstorage "github.com/cyruzin/clean_architecture/internal/app/storage/file"
 
 	"github.com/cyruzin/clean_architecture/internal/app/config"
 	"github.com/rs/zerolog"
+	"github.com/rs/zerolog/log"
+	"github.com/rs/zerolog/pkgerrors"
 )
 
 func main() {
@@ -20,10 +24,20 @@ func main() {
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-	zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+	zerolog.ErrorStackMarshaler = pkgerrors.MarshalStack
 
-	csvRepository := csvstorage.NewCSVRepository()
-	routeHandlers := controller.NewHandler(csvRepository)
+	if cfg.EnvMode == "production" {
+		zerolog.TimeFieldFormat = zerolog.TimeFormatUnix
+		log.Debug().Msg("running in production mode")
+	} else {
+		log.Logger = log.Output(zerolog.ConsoleWriter{Out: os.Stderr})
+		log.Debug().Msg("running in development mode")
+	}
+
+	routeRepository := storage.NewCSVRepository()
+	routeService := service.NewService(routeRepository)
+
+	routeHandlers := controller.NewHandler(routeService)
 	routes := router.New(routeHandlers)
 
 	server.Start(ctx, cfg, routes)
