@@ -32,6 +32,7 @@ func InvalidRequest(
 		Str("proto", r.Proto).
 		Str("remote_address", r.RemoteAddr).
 		Int("status", httpCode).
+		Stack().
 		Msg(message)
 
 	w.WriteHeader(httpCode)

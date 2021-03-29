@@ -61,7 +61,7 @@ func (c *csvRepository) Create(ctx context.Context, route *domain.Route) error {
 func (c *csvRepository) CheckBestRoute(filePath string, query *domain.Route) (*domain.Route, error) {
 	routes, err := c.parse(filePath)
 	if err != nil {
-		log.Error().Err(err).Msg(err.Error())
+		log.Error().Err(err).Stack().Msg(err.Error())
 		return &domain.Route{}, err
 	}
 
@@ -98,7 +98,7 @@ func (c *csvRepository) checkDuplicateRoute(
 ) (bool, error) {
 	routes, err := c.parse(filePath)
 	if err != nil {
-		log.Error().Err(err).Msg(err.Error())
+		log.Error().Err(err).Stack().Msg(err.Error())
 		return false, err
 	}
 

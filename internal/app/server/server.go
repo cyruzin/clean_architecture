@@ -34,7 +34,7 @@ func Start(
 
 		log.Info().Msg("shutting down the server...")
 		if err := srv.Shutdown(ctx); err != nil {
-			log.Error().Err(err).Msg("server failed to shutdown")
+			log.Error().Err(err).Stack().Msg("server failed to shutdown")
 		}
 		close(idleConnsClosed)
 	}()
@@ -43,7 +43,7 @@ func Start(
 	log.Info().Msg("you're good to go! :)")
 
 	if err := srv.ListenAndServe(); err != http.ErrServerClosed {
-		log.Error().Err(err).Msg("server failed to start")
+		log.Error().Err(err).Stack().Msg("server failed to start")
 	}
 
 	<-idleConnsClosed
