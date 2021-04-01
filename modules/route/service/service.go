@@ -3,7 +3,7 @@ package service
 import (
 	"context"
 
-	"github.com/cyruzin/clean_architecture/internal/app/domain"
+	"github.com/cyruzin/clean_architecture/domain"
 )
 
 type routeService struct {

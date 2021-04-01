@@ -2,10 +2,12 @@ package controller
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 
-	"github.com/cyruzin/clean_architecture/internal/app/domain"
+	"github.com/cyruzin/clean_architecture/domain"
 	"github.com/cyruzin/clean_architecture/pkg/rest"
+	"github.com/go-chi/chi"
 )
 
 // RouteHandler is struct that implements Route Service.
@@ -14,13 +16,20 @@ type RouteHandler struct {
 }
 
 // NewHandler will instantiate the handlers.
-func NewHandler(r domain.RouteService) *RouteHandler {
-	return &RouteHandler{routeService: r}
+func NewHandler(c *chi.Mux, rs domain.RouteService) {
+	handler := RouteHandler{routeService: rs}
+
+	c.Route("/route", func(r chi.Router) {
+		r.Get("/", handler.Find)
+		r.Post("/", handler.Create)
+	})
 }
 
 // Find finds the best route.
 func (h *RouteHandler) Find(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
+
+	fmt.Println(params)
 
 	if params["departure"] == nil ||
 		params["destination"] == nil {

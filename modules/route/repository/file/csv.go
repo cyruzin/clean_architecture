@@ -6,7 +6,7 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/cyruzin/clean_architecture/internal/app/domain"
+	"github.com/cyruzin/clean_architecture/domain"
 	"github.com/cyruzin/clean_architecture/pkg/csv"
 	"github.com/cyruzin/clean_architecture/pkg/util"
 	"github.com/rs/zerolog/log"
