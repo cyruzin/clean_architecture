@@ -5,8 +5,8 @@ import (
 	"os"
 
 	"github.com/cyruzin/clean_architecture/domain"
-	storage "github.com/cyruzin/clean_architecture/modules/route/repository/file"
-	"github.com/cyruzin/clean_architecture/modules/route/service"
+	routeRepository "github.com/cyruzin/clean_architecture/modules/route/repository/csv"
+	routeService "github.com/cyruzin/clean_architecture/modules/route/service"
 	"github.com/cyruzin/clean_architecture/pkg/util"
 )
 
@@ -34,8 +34,8 @@ func main() {
 		Price:       0,
 	}
 
-	routeRepository := storage.NewCSVRepository()
-	routeService := service.NewService(routeRepository)
+	routeRepository := routeRepository.NewCSVRepository()
+	routeService := routeService.NewService(routeRepository)
 
 	route, err := routeService.CheckBestRoute(util.PathBuilder("/assets/routes.csv"), query)
 	if err != nil {

@@ -1,4 +1,4 @@
-package storage
+package csv
 
 import (
 	"context"
@@ -23,6 +23,11 @@ func NewCSVRepository() domain.RouteRepository {
 
 // Find finds the best route.
 func (c *csvRepository) Find(ctx context.Context, query *domain.Route) (*domain.Route, error) {
+	if query.Departure == "" ||
+		query.Destination == "" {
+		return nil, domain.ErrParams
+	}
+
 	bestRoute, err := c.CheckBestRoute(filePath, query)
 	if err != nil {
 		return nil, err
@@ -33,6 +38,12 @@ func (c *csvRepository) Find(ctx context.Context, query *domain.Route) (*domain.
 
 // Create creates a new route.
 func (c *csvRepository) Create(ctx context.Context, route *domain.Route) error {
+	if route.Departure == "" ||
+		route.Destination == "" ||
+		route.Price <= 0 {
+		return domain.ErrFields
+	}
+
 	duplicate, err := c.checkDuplicateRoute(filePath, route)
 	if err != nil {
 		return err

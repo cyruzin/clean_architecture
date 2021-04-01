@@ -10,8 +10,8 @@ import (
 
 	"github.com/cyruzin/clean_architecture/modules/route/http/controller"
 	routeMiddleware "github.com/cyruzin/clean_architecture/modules/route/http/middleware"
-	storage "github.com/cyruzin/clean_architecture/modules/route/repository/file"
-	"github.com/cyruzin/clean_architecture/modules/route/service"
+	routeRepository "github.com/cyruzin/clean_architecture/modules/route/repository/csv"
+	routeService "github.com/cyruzin/clean_architecture/modules/route/service"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
 	"github.com/go-chi/render"
@@ -39,8 +39,8 @@ func main() {
 		log.Debug().Msg("running in development mode")
 	}
 
-	routeRepository := storage.NewCSVRepository()
-	routeService := service.NewService(routeRepository)
+	routeRepository := routeRepository.NewCSVRepository()
+	routeService := routeService.NewService(routeRepository)
 
 	router := chi.NewRouter()
 

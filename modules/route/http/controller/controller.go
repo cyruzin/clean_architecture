@@ -2,7 +2,6 @@ package controller
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 
 	"github.com/cyruzin/clean_architecture/domain"
@@ -28,8 +27,6 @@ func NewHandler(c *chi.Mux, rs domain.RouteService) {
 // Find finds the best route.
 func (h *RouteHandler) Find(w http.ResponseWriter, r *http.Request) {
 	params := r.URL.Query()
-
-	fmt.Println(params)
 
 	if params["departure"] == nil ||
 		params["destination"] == nil {
