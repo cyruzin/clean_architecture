@@ -5,9 +5,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/cyruzin/clean_architecture/internal/app/domain"
-	storage "github.com/cyruzin/clean_architecture/internal/app/modules/route/repository/file"
-	"github.com/cyruzin/clean_architecture/internal/app/modules/route/service"
+	"github.com/cyruzin/clean_architecture/domain"
+	storage "github.com/cyruzin/clean_architecture/modules/route/repository/file"
+	"github.com/cyruzin/clean_architecture/modules/route/service"
 	"github.com/cyruzin/clean_architecture/pkg/util"
 )
 
@@ -45,7 +45,7 @@ func main() {
 	}
 
 	bestRoute := fmt.Sprintf(
-		"best route: %s - %s > $%d",
+		"the best route from %s to %s costs $%d",
 		route.Departure,
 		route.Destination,
 		route.Price,
