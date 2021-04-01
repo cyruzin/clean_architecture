@@ -6,7 +6,7 @@ This repo contains a simple command line tool and a rest server.
 
 ## Architecture
 
-For the system architecture, I decided to use the Clean Architecture by Robert C. Martin (Uncle Bob).
+For the system architecture I have decided to use the Clean Architecture proposed by Robert C. Martin (Uncle Bob).
 
 I used the folder structure proposed by the [Standard Go Project Layout](https://github.com/golang-standards/project-layout).
 
