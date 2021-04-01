@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 
@@ -44,12 +43,10 @@ func main() {
 		return
 	}
 
-	bestRoute := fmt.Sprintf(
+	log.Printf(
 		"the best route from %s to %s costs $%d",
 		route.Departure,
 		route.Destination,
 		route.Price,
 	)
-
-	log.Println(bestRoute)
 }
