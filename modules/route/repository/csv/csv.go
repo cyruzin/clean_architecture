@@ -12,7 +12,7 @@ import (
 	"github.com/rs/zerolog/log"
 )
 
-var filePath = util.PathBuilder("./assets/routes.csv")
+var filePath = util.PathBuilder("/assets/routes.csv")
 
 type csvRepository struct{}
 
