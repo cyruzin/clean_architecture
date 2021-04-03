@@ -5,15 +5,12 @@ import (
 	"errors"
 	"io"
 	"os"
-
-	"github.com/rs/zerolog/log"
 )
 
 // Read reads the content of the CSV file.
 func Read(filePath string) ([][]string, error) {
 	csvFile, err := os.OpenFile(filePath, os.O_RDONLY|os.O_CREATE, 0644)
 	if err != nil {
-		log.Error().Err(err).Stack().Msg("failed to open the csv file")
 		return nil, err
 	}
 
@@ -30,7 +27,6 @@ func Read(filePath string) ([][]string, error) {
 		}
 
 		if err != nil {
-			log.Error().Err(err).Stack().Msg("failed to read the csv file")
 			return [][]string{}, err
 		}
 
@@ -44,7 +40,6 @@ func Read(filePath string) ([][]string, error) {
 func Write(filePath string, content string) error {
 	csvFile, err := os.OpenFile(filePath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
 	if err != nil {
-		log.Error().Err(err).Stack().Msg("could not open csv file to write")
 		return err
 	}
 
@@ -55,7 +50,6 @@ func Write(filePath string, content string) error {
 	}
 
 	if _, err := csvFile.WriteString(content + "\n"); err != nil {
-		log.Error().Err(err).Stack().Msg("failed to write to the csv file")
 		return err
 	}
 
