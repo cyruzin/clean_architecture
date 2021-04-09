@@ -3,7 +3,7 @@ package domain
 import "errors"
 
 var (
-	// ErrParms will throw if one of the parameters is missing from the request
+	// ErrParams will throw if one of the parameters is missing from the request
 	ErrParams = errors.New("departure/destination param missing")
 	// ErrFields will throw if one of the fields are missing
 	ErrFields = errors.New("all fields are required")
