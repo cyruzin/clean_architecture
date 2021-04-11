@@ -8,11 +8,13 @@ This repo contains a simple command line tool and a rest server.
 
 For the system architecture I have decided to use the Clean Architecture proposed by Robert C. Martin (Uncle Bob).
 
-I used the folder structure proposed by the [Standard Go Project Layout](https://github.com/golang-standards/project-layout).
+Pull requests are welcome.
+
+<p align="center"><img src="./assets/clean_architecture_diagram.png"></p>
 
 ## Install
 
-Make sure you have Git and Go 1.15.x installed in you machine.
+Make sure you have Git and Go installed in you machine.
 
 Clone the repo:
 
