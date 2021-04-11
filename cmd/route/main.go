@@ -10,8 +10,9 @@ import (
 
 	"github.com/cyruzin/clean_architecture/modules/route/http/controller"
 	routeMiddleware "github.com/cyruzin/clean_architecture/modules/route/http/middleware"
-	routeRepository "github.com/cyruzin/clean_architecture/modules/route/repository/csv"
-	routeService "github.com/cyruzin/clean_architecture/modules/route/service"
+	routePresenter "github.com/cyruzin/clean_architecture/modules/route/presenter/csv"
+	routeUseCase "github.com/cyruzin/clean_architecture/modules/route/usecase"
+	"github.com/cyruzin/clean_architecture/pkg/util"
 	"github.com/go-chi/chi"
 	"github.com/go-chi/cors"
 	"github.com/go-chi/render"
@@ -39,8 +40,8 @@ func main() {
 		log.Debug().Msg("running in development mode")
 	}
 
-	routeRepository := routeRepository.NewCSVRepository()
-	routeService := routeService.NewService(routeRepository)
+	routePresenter := routePresenter.NewCSVPresenter(util.PathBuilder("/assets/routes.csv"))
+	routeUseCase := routeUseCase.NewRouteUseCase(routePresenter)
 
 	router := chi.NewRouter()
 
@@ -64,16 +65,18 @@ func main() {
 		MaxAge:           300,
 	})
 
-	router.Use(cors.Handler)
-	router.Use(middleware.Timeout(60 * time.Second))
-	router.Use(render.SetContentType(render.ContentTypeJSON))
-	router.Use(routeMiddleware.LoggerMiddleware)
+	router.Use(
+		middleware.Timeout(60*time.Second),
+		cors.Handler,
+		render.SetContentType(render.ContentTypeJSON),
+		routeMiddleware.LoggerMiddleware,
+	)
 
 	router.Get("/", func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte("Clean Architecture example"))
 	})
 
-	controller.NewHandler(router, routeService)
+	controller.NewHandler(router, routeUseCase)
 
 	srv := &http.Server{
 		Addr:              ":" + cfg.Port,
