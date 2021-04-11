@@ -5,14 +5,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/cyruzin/clean_architecture/domain"
-	"github.com/cyruzin/clean_architecture/modules/route/repository/csv"
+	"github.com/cyruzin/clean_architecture/entities"
+	"github.com/cyruzin/clean_architecture/modules/route/presenter/csv"
+	"github.com/cyruzin/clean_architecture/pkg/util"
 )
 
-var repo = csv.NewCSVRepository()
+var repo = csv.NewCSVPresenter(util.PathBuilder("/assets/routes.csv"))
 
 func TestFind(t *testing.T) {
-	route := &domain.Route{
+	route := &entities.Route{
 		Departure:   "RJ",
 		Destination: "SP",
 	}
@@ -24,7 +25,7 @@ func TestFind(t *testing.T) {
 }
 
 func TestFindFail(t *testing.T) {
-	route := &domain.Route{
+	route := &entities.Route{
 		Departure:   "RJ1",
 		Destination: "SP2",
 	}
@@ -44,7 +45,7 @@ func TestFindFail(t *testing.T) {
 }
 
 func TestCreate(t *testing.T) {
-	route := &domain.Route{
+	route := &entities.Route{
 		Departure:   "RJ",
 		Destination: "SP",
 		Price:       int(time.Now().UnixNano()),
@@ -57,7 +58,7 @@ func TestCreate(t *testing.T) {
 }
 
 func TestCreateFail(t *testing.T) {
-	route := &domain.Route{
+	route := &entities.Route{
 		Departure:   "",
 		Destination: "",
 		Price:       0,
