@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/cyruzin/clean_architecture/workflows/Build/badge.svg)](https://github.com/cyruzin/clean_architecture/actions?query=workflow%3ABuild+branch%3Amaster) [![Go Report Card](https://goreportcard.com/badge/github.com/cyruzin/clean_architecture)](https://goreportcard.com/report/github.com/cyruzin/clean_architecture) [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 
-This repo contains a simple command line tool and a rest server.
+This repo contains a simple command line tool and a rest server that checks the best price between two destinations.
 
 ## Architecture
 
@@ -28,7 +28,7 @@ Install Go dependencies:
  go mod download
 ```
 
-Rename the .env.example file to .env and change the values if you want.
+If you want to modify the default values, rename the .env.example file to .env and change the values if you want.
 
 ```sh
  mv .env.example .env
