@@ -4,9 +4,9 @@ import (
 	"log"
 	"os"
 
-	"github.com/cyruzin/clean_architecture/domain"
-	routeRepository "github.com/cyruzin/clean_architecture/modules/route/repository/csv"
-	routeService "github.com/cyruzin/clean_architecture/modules/route/service"
+	"github.com/cyruzin/clean_architecture/entities"
+	routePresenter "github.com/cyruzin/clean_architecture/modules/route/presenter/csv"
+	routeUseCase "github.com/cyruzin/clean_architecture/modules/route/usecase"
 	"github.com/cyruzin/clean_architecture/pkg/util"
 )
 
@@ -28,16 +28,16 @@ func main() {
 
 	args := os.Args[1:]
 
-	query := &domain.Route{
+	r := &entities.Route{
 		Departure:   args[0],
 		Destination: args[1],
 		Price:       0,
 	}
 
-	routeRepository := routeRepository.NewCSVRepository()
-	routeService := routeService.NewService(routeRepository)
+	routePresenter := routePresenter.NewCSVPresenter(util.PathBuilder("/assets/routes.csv"))
+	routeUseCase := routeUseCase.NewRouteUseCase(routePresenter)
 
-	route, err := routeService.CheckBestRoute(util.PathBuilder("/assets/routes.csv"), query)
+	route, err := routeUseCase.CheckBestRoute(r)
 	if err != nil {
 		log.Println(err.Error())
 		return
